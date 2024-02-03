@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BookstoreModels.Models
 {
+
     public class Author
     {
-        public Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-
-    public DateTime BirthDay { get; set; }
-}
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public DateTime BirthDay { get; set; }
+    }
 }

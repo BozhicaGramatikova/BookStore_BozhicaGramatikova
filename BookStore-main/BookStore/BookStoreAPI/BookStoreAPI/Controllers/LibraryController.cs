@@ -5,30 +5,34 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreAPI.Controllers
 {
-    [Route("api/[controller]")]
+
     [ApiController]
+    [Route("[controller]")]
+
     public class LibraryController : ControllerBase
     {
-        private readonly ILibraryService _libraryService;
+        public readonly ILibraryService _libraryService;
 
         public LibraryController(ILibraryService libraryService)
         {
             _libraryService = libraryService;
         }
 
-        [HttpPost("GetAllBooksByAuthorAndDate")]
-        public GetAllBooksByAuthorResponse?
-            GetAllBooksByAuthorAndDate([FromBody]
-                GetAllBooksByAuthorRequest request)
+
+        [HttpPost("GetAllBooksByAuthorId")]
+        public GetAllBooksByAuthorResponse GetAllBooksByAuthorAfterDate(GetAllBooksByAuthorRequest request)
         {
-            return _libraryService
-                .GetAllBooksByAuthorAfterReleaseDate(request);
+            return _libraryService.GetAllBooksByAuthorAfterDate(request);
         }
 
-        [HttpPost("SomeEndpoint")]
-        public string GetSomeData([FromBody] TestRequest request)
+        [HttpPost("TestEndPoint")]
+        public string TestEndPoint([FromBody]
+
+            GetAllBooksByAuthorRequest request)
         {
             return "Ok";
         }
     }
+
+
 }

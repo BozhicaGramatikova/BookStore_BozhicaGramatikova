@@ -27,7 +27,7 @@ namespace BookStoreBL.Services
         {
             if (id > 50000) return null;
 
-            return _authorRepository.GetById(id);
+            return _authorRepository.GetbyId(id);
         }
 
         public void Add(Author author)
@@ -38,6 +38,16 @@ namespace BookStoreBL.Services
         public void Remove(int id)
         {
             _authorRepository.Remove(id);
+        }
+
+        public Author GetbyId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -5,6 +5,7 @@ using BookstoreDL.Interfaces;
 using BookstoreDL.Repositories;
 
 
+
 namespace BookStoreAPI
 {
     public class Program
@@ -30,10 +31,6 @@ namespace BookStoreAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services
-                .AddFluentValidationAutoValidation();
-            builder.Services
-                .AddValidatorsFromAssemblyContaining(typeof(Program));
 
             builder.Services.AddHealthChecks()
                 .AddCheck<CustomHealthCheck>(nameof(CustomHealthCheck));

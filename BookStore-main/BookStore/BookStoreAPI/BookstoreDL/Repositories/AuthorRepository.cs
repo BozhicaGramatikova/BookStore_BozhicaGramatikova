@@ -33,7 +33,10 @@ namespace BookstoreDL.Repositories
             InMemoryDb.AuthorsData.Remove(author);
         }
 
-     
+        public Author GetbyId(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

@@ -8,20 +8,31 @@ namespace BookStoreAPI.Controllers
     [Route("[controller]")]
     public class AuthorController : ControllerBase
     {
-       
-
-        private readonly ILogger<AuthorController> _logger;
         private readonly IAuthorService _authorService;
-        public AuthorController(ILogger<AuthorController> logger)
+
+
+        public AuthorController(IAuthorService authorService)
         {
-            _logger = logger;
+            _authorService = authorService;
         }
 
-        [HttpGet( "GetById")]
+        [HttpGet("GetAll")]
+        public IEnumerable<Author> GetAll()
+        {
+            return _authorService.GetAll();
+        }
+        [HttpGet("GetById")]
         public Author? GetById(int id)
         {
-            return _authorService.GetById(id);
+            return _authorService.GetbyId(id);
         }
+
+        [HttpPost("Add")]
+        public void Add([FromBody] Author author)
+        {
+            _authorService.Add(author);
+        }
+
         [HttpGet("Delete")]
         public void Delete(int id)
         {
@@ -29,3 +40,4 @@ namespace BookStoreAPI.Controllers
         }
     }
 }
+

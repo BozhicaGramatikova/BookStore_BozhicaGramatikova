@@ -8,9 +8,11 @@ namespace BookstoreModels.Models
 {
     public class Book
     {
+        public string Title;
+
         public int Id { get; set; }
 
-        public string Title { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
 
         public int AuthorId { get; set; }
 

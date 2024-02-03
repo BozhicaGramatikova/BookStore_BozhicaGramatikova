@@ -1,4 +1,6 @@
 ﻿using BookStoreBL.Interfaces;
+using BookstoreModels.Models.Requests;
+using BookstoreModels.Models.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,11 @@ namespace BookStoreBL.Services
             _bookService = bookService;
         }
 
+        public int CheckAuthorCount(int input)
+        {
+            throw new NotImplementedException();
+        }
+
         public int CheckBookCount(int input)
         {
             if (input < 0) return 0;
@@ -29,6 +36,11 @@ namespace BookStoreBL.Services
             return bookCount.Count + input;
         }
 
+        public GetAllBooksByAuthorResponse GetAllBooksByAuthorAfterDate(GetAllBooksByAuthorRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
         public GetAllBooksByAuthorResponse?
             GetAllBooksByAuthorAfterReleaseDate(
                 GetAllBooksByAuthorRequest request)
@@ -36,7 +48,7 @@ namespace BookStoreBL.Services
             var response = new GetAllBooksByAuthorResponse
             {
                 Author = _authorService
-                    .GetById(request.AuthorId),
+                    .GetbyId(request.AuthorId),
                 Books = _bookService
                     .GetAllByAuthorAfterReleaseDate(
                         request.AuthorId,

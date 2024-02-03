@@ -1,4 +1,6 @@
 ﻿using BookStoreBL.Interfaces;
+using BookstoreDL.Interfaces;
+using BookstoreModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,45 +9,49 @@ using System.Threading.Tasks;
 
 namespace BookStoreBL.Services
 {
-    public class BookService:IBookService
-    {
-        private readonly IBookRepository _bookRepository;
 
-        public BookService(IBookRepository bookRepository)
+        public class BookService : IBookService
         {
-            _bookRepository = bookRepository;
-        }
-        public List<Book> GetAll()
-        {
-            return _bookRepository.GetAll();
-        }
 
-        public Book GetById(int id)
-        {
-            if (id <= 0) return new Book();
+            private readonly IBookRepository _bookRepository;
 
-            return _bookRepository.GetById(id);
-        }
+            public BookService(IBookRepository bookRepository)
+            {
+                _bookRepository = bookRepository;
+            }
 
-        public void Add(Book book)
-        {
-            _bookRepository.Add(book);
-        }
+            public void Add(Book book)
+            {
+                _bookRepository.Add(book);
+            }
 
-        public void Remove(int id)
-        {
-            _bookRepository.Remove(id);
-        }
+            public void Remove(int id)
+            {
+                _bookRepository.Remove(id);
+            }
 
-        public List<Book> GetAllByAuthorAfterReleaseDate
-            (int authorId, DateTime afterDate)
-        {
-            var result =
-                _bookRepository.GetAllByAuthor(authorId);
 
-            return result
-                .Where(b => b.ReleaseDate >= afterDate)
-                .ToList();
+            public List<Book> GetAll()
+            {
+                return _bookRepository.GetAll();
+            }
+
+            public List<Book> GetAllByAuthorAfterReleaseDate(int authorId, DateTime afterDate)
+            {
+                throw new NotImplementedException();
+            }
+
+            public List<Book> GetAllByAuthorId(int authorId)
+            {
+                return _bookRepository.GetAllByAuthor(authorId);
+            }
+
+            public Book? GetById(int id)
+            {
+                return _bookRepository.GetById(id);
+            }
+
+        
         }
     }
-}
+

@@ -6,6 +6,7 @@ namespace BookStoreAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+
     public class BookController : ControllerBase
     {
         private readonly IBookService _bookService;
@@ -15,16 +16,10 @@ namespace BookStoreAPI.Controllers
             _bookService = bookService;
         }
 
-        [HttpGet("GetAll")]
-        public List<Book> GetAll()
+        [HttpGet("Get All")]
+        public IEnumerable<Book> GetAll()
         {
             return _bookService.GetAll();
-        }
-
-        [HttpGet("GetById")]
-        public Book GetById(int id)
-        {
-            return _bookService.GetById(id);
         }
 
         [HttpPost("Add")]
@@ -33,10 +28,17 @@ namespace BookStoreAPI.Controllers
             _bookService.Add(book);
         }
 
+        [HttpGet("GetById")]
+        public Book? GetById(int id)
+        {
+            return _bookService.GetById(id);
+        }
+
         [HttpDelete("Delete")]
-        public void Delete(int id)
+        public void DeleteById(int id)
         {
             _bookService.Remove(id);
         }
+
     }
 }
